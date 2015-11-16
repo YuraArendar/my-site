@@ -13,6 +13,12 @@
 
     @include('admin::auth.scripts')
 
+    <script>
+        $(document).ready(function(){
+            {!! @$onLoad !!}
+        });
+    </script>
+
 </head>
 
 <body>
