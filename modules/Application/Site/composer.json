@@ -1,0 +1,20 @@
+{
+    "name": "application/site",
+    "description": "Frontend part of the site",
+    "license": "YuriyArendar",
+    "authors": [
+        {
+            "name": "YuriyArendar",
+            "email": "ura.arendar@gmail.com"
+        }
+    ],
+    "autoload":{
+        "psr-4":{
+            "Application\\Site\\":"src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "illuminate/support":"~5"
+    }
+}
