@@ -4,7 +4,23 @@
 
 class Main{
 
-    public static function redirect($url='', $status = '302', $message= '', $title = '', $type = '',$icon='',$class=''){
+    public function init()
+    {
+        if(\Session::has('message')){
+            $message = \Session::pull('message');
+            $onLoad = "new PNotify({
+                title:'".$message['title']."',
+                text:'".$message['message']."',
+                type:'".$message['type']."',
+                icon:'".$message['icon']."',
+                addclass:'".$message['class']."'
+            });";
+            view()->share("onLoad",$onLoad);
+        }
+    }
+
+    public static function redirect($url='', $status = '302', $message= '', $title = '', $type = '',$icon='',$class='')
+    {
         if(\Request::ajax()){
             \Session::put('message.type',$type);
             \Session::put('message.title',$title);
@@ -14,6 +30,17 @@ class Main{
         }else{
             \Redirect::to($url,$status);
         }
+    }
+
+    public static function message($message= '', $title = '', $type = '',$icon='',$class='')
+    {
+        return [
+            'message'=>$message,
+            'title'=>$title,
+            'type'=>$type,
+            'icon'=>$icon,
+            'class'=>$class
+        ];
     }
 
 }
