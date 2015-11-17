@@ -8,6 +8,8 @@ $baseDir = dirname($vendorDir);
 return array(
     'AddRoleTableToTableUser' => $baseDir . '/database/migrations/2015_11_15_164601_add_role_table_to_table_user.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+    'CreateStructureLangTable' => $baseDir . '/database/migrations/2015_11_17_230522_create_structure_lang_table.php',
+    'CreateStructureTeble' => $baseDir . '/database/migrations/2015_11_17_230319_create_structure_teble.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',

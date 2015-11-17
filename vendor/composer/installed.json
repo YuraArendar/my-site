@@ -3685,5 +3685,99 @@
             "persistence",
             "queryobject"
         ]
+    },
+    {
+        "name": "laracasts/generators",
+        "version": "1.1.2",
+        "version_normalized": "1.1.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/laracasts/Laravel-5-Generators-Extended.git",
+            "reference": "eb58b86f49d69eff4db4cc6f2ec94480a57c4358"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/laracasts/Laravel-5-Generators-Extended/zipball/eb58b86f49d69eff4db4cc6f2ec94480a57c4358",
+            "reference": "eb58b86f49d69eff4db4cc6f2ec94480a57c4358",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/support": "~5.0",
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "phpspec/phpspec": "~2.1"
+        },
+        "time": "2015-08-19 14:29:06",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Laracasts\\Generators\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jeffrey Way",
+                "email": "jeffrey@laracasts.com"
+            }
+        ],
+        "description": "Extend Laravel 5's generators.",
+        "keywords": [
+            "generators",
+            "laravel"
+        ]
+    },
+    {
+        "name": "kalnoy/nestedset",
+        "version": "v3.1.0",
+        "version_normalized": "3.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/lazychaser/laravel-nestedset.git",
+            "reference": "2d779aca90f296c3e04620ec3590172083d0dd95"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/lazychaser/laravel-nestedset/zipball/2d779aca90f296c3e04620ec3590172083d0dd95",
+            "reference": "2d779aca90f296c3e04620ec3590172083d0dd95",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/database": "~5.1.0",
+            "illuminate/events": "~5.1.0",
+            "illuminate/support": "~5.1.0",
+            "php": ">=5.5.0"
+        },
+        "time": "2015-09-10 05:40:54",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Kalnoy\\Nestedset\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Alexander Kalnoy",
+                "email": "lazychaser@gmail.com"
+            }
+        ],
+        "description": "Nested Set Model for Laravel 4",
+        "keywords": [
+            "database",
+            "hierarchy",
+            "laravel",
+            "nested sets",
+            "nsm"
+        ]
     }
 ]

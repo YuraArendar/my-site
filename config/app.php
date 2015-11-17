@@ -151,6 +151,8 @@ return [
         Application\Site\SiteServiceProvider::class,
         Application\Admin\AdminServiceProvider::class,
 
+        Laracasts\Generators\GeneratorsServiceProvider::class,
+
 
 
         /*

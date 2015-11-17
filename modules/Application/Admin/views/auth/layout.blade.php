@@ -47,7 +47,7 @@
                 <!-- /simple login form -->
 
                 <!-- Footer -->
-                    @include('admin::auth.inc.footer-text')
+                    @include('admin::layout.default.inc.footer-text')
                 <!-- /footer -->
 
             </div>

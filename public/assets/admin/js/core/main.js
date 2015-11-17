@@ -23,15 +23,19 @@ var Main = {
             dataType: "json",
             success: function(data){
                 if(typeof data['redirect'] != 'undefined'){
-                    window.location = data['redirect'];
+                    if(data['redirect']=='')
+                        window.location.reload();
+                    else
+                        window.location = data['redirect'];
                 }else{
-                    Main.showValidationMessage(data);
+                    if(typeof data['message'] != 'undefined')
+                        Main.showNotifyMessage(data['title'],data['message'],data['icon'],data['class']);
+                    else
+                        Main.showValidationMessage(data);
                 }
                 console.log(data);
             }
         });
-
-        Main.showNotifyMessage('Title','text','info','icon-info22');
 
         return false;
     },

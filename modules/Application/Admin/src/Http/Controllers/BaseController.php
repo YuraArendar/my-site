@@ -1,7 +1,7 @@
 <?php
 namespace Application\Admin\Http\Controllers;
 
-use app\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use Application\Admin\Helpers\Main;
 use Illuminate\Http\Request;
 
