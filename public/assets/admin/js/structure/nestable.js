@@ -1,28 +1,14 @@
-/*
-Name: 			UI Elements / Nestable - Examples
-Written by: 	Okler Themes - (http://www.okler.net)
-Theme Version: 	1.4.1
-*/
-
-(function( $ ) {
-
-	'use strict';
-		
-	/*
-	Update Output
-	*/
-	var updateOutput = function (e) {
-		var list = e.length ? e : $(e.target),
-			output = list.data('output');
-
+$(document).ready(function()
+{
+	var updateOutput = function(e)
+	{
+		var list   = e.length ? e : $(e.target),
+				output = list.data('output');
 		if (window.JSON) {
 			var data =  window.JSON.stringify(list.nestable('serialize'));
 			var token = $('meta[name="csrf_token"]').attr('content');
-
-			var lang = $('meta[http-equiv="Content-Language"]').attr('content');
-
 			$.ajax({
-				url: '/'+lang+'/cms/structure/rebuild',
+				url: '/admin/structure/rebuild',
 				method:"POST",
 				data: {
 					_token : token,
@@ -38,18 +24,9 @@ Theme Version: 	1.4.1
 		}
 	};
 
-	/*
-	Nestable 1
-	*/
 	$('#nestable').nestable({
-		group: 1
-	}).on('change', updateOutput);
+				group: 1
+			})
+			.on('change', updateOutput);
 
-	/*
-	Output Initial Serialised Data
-	*/
-	$(function() {
-		updateOutput($('#nestable').data('output', $('#nestable-output')));
-	});
-
-}).apply(this, [ jQuery ]);
+});

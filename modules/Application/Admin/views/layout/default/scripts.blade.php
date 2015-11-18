@@ -20,5 +20,10 @@
 <script type="text/javascript" src="/assets/admin/js/pages/layout_navbar_hideable_sidebar.js"></script>
 <!-- /theme JS files -->
 
-<script type="text/javascript" src="/assets/admin/js/structure/jquery.nestable.js"></script>
-<script type="text/javascript" src="/assets/admin/js/structure/nestable.js"></script>
+<script type="text/javascript" src="/assets/admin/js/core/main.js"></script>
+
+@if(isset($scripts) && !empty($scripts))
+    @foreach($scripts as $script)
+        {!! $script !!}
+    @endforeach
+@endif

@@ -1,18 +1,9 @@
 @extends('admin::layout.default.layout')
 
 @section('content')
+    <div class="dd" id="nestable">
 
-    <div class="col-sm-6">
-        <div class="mb-md">
-            <a href="/admin/structure/create" class="btn btn-primary">Add</a>
-        </div>
+        {!! $view !!}
+
     </div>
-    <div class="col-md-12">
-        <div class="dd" id="nestable">
-
-            {!! $view !!}
-
-        </div>
-    </div>
-
 @endsection

@@ -15,6 +15,6 @@ class StructureLang extends Model
     ];
 
     public function structure(){
-        return $this->belongsTo('shop\Structure');
+        return $this->belongsTo('Application\Admin\Structure');
     }
 }

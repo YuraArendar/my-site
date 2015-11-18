@@ -42,3 +42,4 @@
 </div>
 
 {!! Form::hidden('language_id',$locale) !!}
+{!! Form::hidden('_token',csrf_token()) !!}

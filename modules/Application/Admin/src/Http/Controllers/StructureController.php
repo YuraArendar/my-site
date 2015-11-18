@@ -41,6 +41,8 @@ class StructureController extends BaseController
         }
 
         view()->share('listStructures',$list);
+
+
     }
 
     public function getIndex()
@@ -49,10 +51,10 @@ class StructureController extends BaseController
         $structures = $this->currentModel->get()->sortBy('position');
 
         foreach ($structures as $key=>$struct) {
-            $lang = $this->langModel->where(['structure_id'=>$struct['id'],'language_id'=>\LaravelLocalization::getCurrentLocale()])->first();
+            $lang = $this->langModel->where(['structure_id'=>$struct['id'],'language_id'=>\Lang::getLocale()])->first();
             if($lang){
                 $structures[$key]->name = $lang->name;
-                $structures[$key]->link = action('\Administration\Http\Controllers\StructureController@getEdit',['id'=>$struct['id']]);
+                $structures[$key]->link = action('\Application\Admin\Http\Controllers\StructureController@getEdit',['id'=>$struct['id']]);
             }else{
                 unset($structures[$key]);
             }
@@ -74,17 +76,18 @@ class StructureController extends BaseController
             '<li class="dd-item" data-id="{id}">'.$activeTemplate.$editTemplate.'<div class="dd-handle">{name}</div><ol class="dd-list">{|}</ol></li>'
         );
 
-
         view()->share('scripts', [
-            '<script src="/assets/cms/vendor/jquery-nestable/jquery.nestable.js"></script>',
-            '<script src="/assets/cms/javascripts/ui-elements/examples.nestable.js"></script>',
-            '<script src="/assets/cms/vendor/ios7-switch/ios7-switch.js"></script>',
+            '<script type="text/javascript" src="/assets/admin/js/structure/jquery.nestable.js"></script>',
+            '<script type="text/javascript" src="/assets/admin/js/structure/nestable.js"></script>',
+        ]);
+
+        view()->share('styles', [
+            '<link href="/assets/admin/css/nestable.css" rel="stylesheet" type="text/css">',
         ]);
 
         view()->share('title','Structures list');
 
         return view('admin::structure.index',compact('view'));
-       // return view('admin::layout.default.layout');
     }
 
 
@@ -146,9 +149,11 @@ class StructureController extends BaseController
         \Session::put('message.title','Saved');
         \Session::put('message.message','Structure was saved');
 
+        return Main::redirect(
+            action('Application\Admin\Http\Controllers\StructureController@getEdit',['id' => $structure->id]),
+            '302','Structure was saved','Saved','success'
+        );
 
-        \Log::error('$structure->id ',[$structure->id]);
-        return ['redirect'=>action('\Administration\Http\Controllers\StructureController@getEdit',['id'=>$structure->id])];
     }
 
     /**

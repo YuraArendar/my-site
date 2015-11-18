@@ -17,6 +17,6 @@ class Structure extends Node
     ];
 
     public function structureLang(){
-        return $this->hasMany('shop\StructureLang','structure_id');
+        return $this->hasMany('Application\Admin\StructureLang','structure_id');
     }
 }

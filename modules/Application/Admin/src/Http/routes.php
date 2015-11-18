@@ -1,7 +1,4 @@
 <?php
-
-
-
 Route::group(['prefix' => 'admin','namespace'=>'Application\Admin\Http\Controllers'], function () {
     // Authentication routes...
     Route::get('auth/login', 'Auth\AdminAuthController@getLogin');
@@ -15,6 +12,9 @@ Route::group(['prefix' => 'admin','namespace'=>'Application\Admin\Http\Controlle
     Route::group(['middleware' => 'auth.admin'], function () {
         Route::get('structure','StructureController@getIndex');
         Route::get('structure/create','StructureController@getCreate');
+        Route::post('structure/create','StructureController@postStore');
+        Route::post('structure/edit/{id}','StructureController@getEdit');
+        Route::post('structure/rebuild','StructureController@postRebuild');
     });
 
 });

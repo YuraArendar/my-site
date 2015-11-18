@@ -51,6 +51,10 @@ class BaseController extends Controller{
     public function __construct()
     {
         Main::init();
+
+        view()->share('locale',\Lang::getLocale());
+
+        view()->share('itemName',$this->itemName);
     }
 
     /**
