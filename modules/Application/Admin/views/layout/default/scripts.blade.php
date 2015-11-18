@@ -19,3 +19,6 @@
 <script type="text/javascript" src="/assets/admin/js/pages/layout_fixed_custom.js"></script>
 <script type="text/javascript" src="/assets/admin/js/pages/layout_navbar_hideable_sidebar.js"></script>
 <!-- /theme JS files -->
+
+<script type="text/javascript" src="/assets/admin/js/structure/jquery.nestable.js"></script>
+<script type="text/javascript" src="/assets/admin/js/structure/nestable.js"></script>

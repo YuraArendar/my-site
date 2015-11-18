@@ -1,10 +1,10 @@
-@extends('administration::layout.layout')
+@extends('admin::layout.default.layout')
 
 @section('content')
 
     <div class="col-sm-6">
         <div class="mb-md">
-            jfgkdfjkl
+            <a href="/admin/structure/create" class="btn btn-primary">Add</a>
         </div>
     </div>
     <div class="col-md-12">

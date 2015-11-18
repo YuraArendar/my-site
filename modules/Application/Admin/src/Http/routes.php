@@ -14,6 +14,7 @@ Route::group(['prefix' => 'admin','namespace'=>'Application\Admin\Http\Controlle
 
     Route::group(['middleware' => 'auth.admin'], function () {
         Route::get('structure','StructureController@getIndex');
+        Route::get('structure/create','StructureController@getCreate');
     });
 
 });
