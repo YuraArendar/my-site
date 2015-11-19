@@ -5,6 +5,8 @@
 <link href="/assets/admin/css/components.min.css" rel="stylesheet" type="text/css">
 <link href="/assets/admin/css/colors.min.css" rel="stylesheet" type="text/css">
 
+<link href="/assets/admin/css/common.css" rel="stylesheet" type="text/css">
+
 @if(isset($styles) && !empty($styles))
     @foreach($styles as $style)
         {!! $style !!}

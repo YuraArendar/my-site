@@ -1,7 +1,7 @@
 /**
  * Nestable
  */
-.dd { position: relative; display: block; margin: 0; padding: 0; max-width: 600px; list-style: none; font-size: 13px; line-height: 20px; }
+.dd { position: relative; display: block; margin: 0; width: 100%; padding: 0; list-style: none; font-size: 13px; line-height: 20px; }
 .dd-list { display: block; position: relative; margin: 0; padding: 0; list-style: none; }
 .dd-list .dd-list { padding-left: 30px; }
 .dd-collapsed .dd-list { display: none; }
@@ -57,7 +57,7 @@
 #nestable2 .dd-handle:hover { background: #bbb; }
 #nestable2 .dd-item > button:before { color: #fff; }
 @media only screen and (min-width: 700px) {
-    .dd { float: left; width: 48%; }
+    .dd { float: left; }
     .dd + .dd { margin-left: 2%; }
 }
 .dd-hover > .dd-handle { background: #2ea8e5 !important; }

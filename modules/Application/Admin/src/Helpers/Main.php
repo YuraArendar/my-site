@@ -8,13 +8,18 @@ class Main{
     {
         if(\Session::has('message') && \Session::get('message') != ''){
             $message = \Session::pull('message');
-            $onLoad = "new PNotify({
-                title:'".$message['title']."',
-                text:'".$message['message']."',
-                type:'".$message['type']."',
-                icon:'".$message['icon']."',
-                addclass:'".$message['class']."'
-            });";
+            $onLoad = "new PNotify({";
+            if(!empty($message['title']))
+                $onLoad.="title:'".$message['title']."',";
+            if(!empty($message['message']))
+                $onLoad.="text:'".$message['message']."',";
+            if(!empty($message['type']))
+                $onLoad .= "type:'".$message['type']."',";
+            if(!empty($message['icon']))
+                $onLoad .= "icon:'".$message['icon']."',";
+            if(!empty($message['class']))
+                $onLoad .= "addclass:'".$message['class']."'";
+            $onLoad .= "});";
             view()->share("onLoad",$onLoad);
         }
     }

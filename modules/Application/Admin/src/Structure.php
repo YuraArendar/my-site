@@ -11,6 +11,7 @@ class Structure extends Node
 
     protected $fillable =[
         'alias',
+        'published',
         'parent_id',
         'controller',
         'position'

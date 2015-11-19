@@ -7,33 +7,23 @@ var Main = {
             var id = this.name;
             var el = $('#'+id+'-error');
             el.html('');
+
+            $(this).closest('.form-group').removeClass('has-error').removeClass('has-feedback');
+            $('#'+id+'-error-icon').hide();
+        });
+        $('.form-control-feedback').each(function(){
+            $(this).hide();
         });
     },
     formSubmit:function(form){
         var url = form.action;
-        var _token = $('input[name="_token"]').val();
-        console.log(_token);
-        var email = $('#input-email').val();
-        var password = $('#input-password').val();
-
         $.ajax({
             type: "POST",
             url: url,
             data: $(form).serialize(),
             dataType: "json",
             success: function(data){
-                if(typeof data['redirect'] != 'undefined'){
-                    if(data['redirect']=='')
-                        window.location.reload();
-                    else
-                        window.location = data['redirect'];
-                }else{
-                    if(typeof data['message'] != 'undefined')
-                        Main.showNotifyMessage(data['title'],data['message'],data['icon'],data['class']);
-                    else
-                        Main.showValidationMessage(data);
-                }
-                console.log(data);
+                Main.actionData(data);
             }
         });
 
@@ -53,9 +43,25 @@ var Main = {
     },
     showValidationMessage: function(data){
         $.each(data,function(i,value){
+            var input = $('#'+i);
             var el = $('#'+i+'-error');
+            input.closest('.form-group').addClass('has-error').addClass('has-feedback');
+            $('#'+i+'-error-icon').show();
             el.html(value);
         });
+    },
+    actionData: function(data){
+        if(typeof data['redirect'] != 'undefined'){
+            if(data['redirect']=='')
+                window.location.reload();
+            else
+                window.location = data['redirect'];
+        }else{
+            if(typeof data['message'] != 'undefined')
+                Main.showNotifyMessage(data['title'],data['message'],data['icon'],data['class']);
+            else
+                Main.showValidationMessage(data);
+        }
     }
 
 };

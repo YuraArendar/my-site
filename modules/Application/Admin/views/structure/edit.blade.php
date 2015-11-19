@@ -1,4 +1,4 @@
-@extends('administration::layout.layout')
+@extends('admin::layout.default.layout')
 
 @section('content')
 
@@ -6,12 +6,11 @@
     {!! Form::open([
     'method'=>'POST',
     'class'=>'form-horizontal form-bordered',
-    'onsubmit'=>'return Main.submitForm(this)',
-    'url'=>action('\Administration\Http\Controllers\StructureController@postUpdate',
-    ['id'=>@$structure['id']])
+    'onsubmit'=>'return Main.formSubmit(this);',
+    'url'=>Route('update_structure', ['id'=>@$structure['id']])
     ]) !!}
 
-    @include('administration::structure.form')
+    @include('admin::structure.form')
 
     {!! Form::close() !!}
 

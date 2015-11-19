@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf_token" content="{{ csrf_token() }}">
-    <title>Limitless - Responsive Web Application Kit by Eugene Kopyov</title>
+    <title>Admin</title>
 
     <!-- Global stylesheets -->
         @include('admin::layout.default.styles')
@@ -14,15 +14,15 @@
 
     @include('admin::layout.default.scripts')
 
-    <script>
-        $(document).ready(function(){
-            {!! @$onLoad !!}
-        });
-    </script>
 </head>
 
 <body class="navbar-top">
 
+<script>
+    $(document).ready(function(){
+        {!! @$onLoad !!}
+    });
+</script>
 <!-- Main navbar -->
     @include('admin::layout.default.inc.navbar')
 <!-- /main navbar -->
@@ -54,7 +54,7 @@
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="icon-menu7"></i> <span class="caret"></span></a>
                                         <ul class="dropdown-menu dropdown-menu-right">
-                                            <li><a href="/admin/structure/create">Add new {{ $itemName }}</a></li>
+                                            <li><a href="/admin/{{ $template }}/create">Add new {{ $itemName }}</a></li>
                                             <li><a href="#">----</a></li>
                                             <li><a href="#">----</a></li>
                                             <li class="divider"></li>

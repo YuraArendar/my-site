@@ -1,6 +1,7 @@
 <?php namespace Application\Admin\Http\Controllers;
 
 
+use Application\Admin\Helpers\Main;
 use Application\Admin\Helpers\TreeBuilder;
 use Application\Admin\Structure;
 use Application\Admin\StructureLang;
@@ -10,8 +11,6 @@ class StructureController extends BaseController
 {
     public function __construct(Request $request)
     {
-        parent::__construct();
-
         $this->currentModel = new Structure();
         $this->langModel =  new StructureLang();
         $this->validation = \Validator::make($request->all(), [
@@ -21,8 +20,7 @@ class StructureController extends BaseController
 
         $this->itemName = 'Structure';
         $this->template = 'structure';
-        view()->share('partition',$this->itemName);
-        view()->share('title',$this->itemName);
+
         $structures = $this->currentModel->all()->toArray();
         foreach ($structures as $key=>$struct) {
             $lang = $this->langModel->where(['structure_id'=>$struct['id'],'language_id'=>\Lang::getLocale()])->first();
@@ -42,7 +40,7 @@ class StructureController extends BaseController
 
         view()->share('listStructures',$list);
 
-
+        parent::__construct();
     }
 
     public function getIndex()
@@ -64,11 +62,13 @@ class StructureController extends BaseController
         $structures->linkNodes();
 
         $str =  $structures->toArray();
-        $activeTemplate =  '<span class="switch switch-sm switch-primary check-active pull-right">'.
-            '<input type="checkbox"  name="switch" data-plugin-ios-switch {cheked} /></span>';
+
+
+        $activeTemplate =  '<div class="checkbox checkbox-switchery switchery-xs switchery-double pull-right active-button">'.
+            '<input type="checkbox" data-item="'.$this->template.'" data-id="{id}" class="switchery active-button" {cheked} ></div>';
         $editTemplate = '<span class="edit-buttons pull-right">'.
-            '<a href="{link}" class="on-default edit-row"><i class="fa fa-pencil"></i></a>'.
-            '<a href="#modalBasic" class="on-default remove-row"><i class="fa fa-trash-o"></i></a></span>';
+            '<a href="{link}" class="on-default edit-button"><i class="fa fa-pencil"></i></a>'.
+            '<a data-item="'.$this->template.'" data-id="{id}" class="on-default remove-button"><i class="fa fa-trash-o"></i></a></span>';
         $view = $build->view(
             $str,
             '<ol class="dd-list">{val}</ol>',
@@ -88,6 +88,8 @@ class StructureController extends BaseController
         view()->share('title','Structures list');
 
         return view('admin::structure.index',compact('view'));
+
+        //return view('admin::structure.nestable');
     }
 
 
@@ -145,12 +147,8 @@ class StructureController extends BaseController
             'description'=>$data['description']
         ]);
 
-        \Session::put('message.type','success');
-        \Session::put('message.title','Saved');
-        \Session::put('message.message','Structure was saved');
-
         return Main::redirect(
-            action('Application\Admin\Http\Controllers\StructureController@getEdit',['id' => $structure->id]),
+            Route('edit_structure',['id'=>$structure->id]),
             '302','Structure was saved','Saved','success'
         );
 
@@ -167,14 +165,14 @@ class StructureController extends BaseController
         $structure = $this->currentModel->with('structureLang')->find($id)->toArray();
 
         $lang = $this->langModel->where('structure_id',$id)
-            ->where('language_id',\LaravelLocalization::getCurrentLocale())
+            ->where('language_id',\Lang::getLocale())
             ->first();
         if($lang)
             $lang->toArray();
 
         $structure['lang'] = $lang;
         view()->share('title','Edit structure '.$structure['lang']['name']);
-        return view('administration::structure.edit',compact('structure'));
+        return view('admin::structure.edit',compact('structure'));
     }
 
     /**
@@ -187,7 +185,7 @@ class StructureController extends BaseController
     public function postUpdate(Request $request, $id)
     {
         $this->validation->mergeRules('alias',['required',
-            'regex:/[a-zа-я-\d]+/',
+            'regex:/^[a-zа-я\d-]+$/',
             'max:255'
         ]);
         if($this->validation->fails()){
@@ -202,7 +200,7 @@ class StructureController extends BaseController
         $objectStructure->controller = $data['controller'];
         $objectStructure->save();
         $langStructure =  $this->langModel->where('structure_id',$id)
-            ->where('language_id',\LaravelLocalization::getCurrentLocale())
+            ->where('language_id',\Lang::locale())
             ->first();
         if($langStructure){
             $langStructure->name = $data['name'];
@@ -211,16 +209,18 @@ class StructureController extends BaseController
         }else{
             $langStructure =  new StructureLang();
             $langStructure->structure_id = $objectStructure->id;
-            $langStructure->language_id = \LaravelLocalization::getCurrentLocale();
+            $langStructure->language_id = \Lang::locale();
             $langStructure->name = $data['name'];
             $langStructure->description = $data['description'];
             $langStructure->save();
         }
 
-        return ['message'=>[
-            'title'=>'Saved',
-            'type' => 'success',
-            'message'=>'Structure was saved'
-        ]];
+        return Main::redirect(
+            '',
+            '302',
+            'Structure was saved',
+            'Saved',
+            'success'
+        );
     }
 }

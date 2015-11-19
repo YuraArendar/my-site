@@ -55,6 +55,12 @@ class BaseController extends Controller{
         view()->share('locale',\Lang::getLocale());
 
         view()->share('itemName',$this->itemName);
+
+        view()->share('partition',$this->itemName);
+
+        view()->share('title',$this->itemName);
+
+        view()->share('template',$this->template);
     }
 
     /**
@@ -66,6 +72,47 @@ class BaseController extends Controller{
     {
         view()->share('title','Create new '.$this->itemName);
         return view('admin::'.$this->template.'.create');
+    }
+
+    public function postDelete(Request $request)
+    {
+        if($request->has('id')){
+            $result = $this->currentModel->find($request->get('id'))->delete();
+            if($result){
+                return Main::redirect(
+                    '',
+                    '302',
+                    $this->itemName.' was deleted!',
+                    'Deleted'
+                );
+            }else{
+                return Main::message(
+                    'Wrong parameters!',
+                    'Error',
+                    'error'
+                );
+            }
+        }else{
+            return Main::message(
+                'Wrong parameters!',
+                'Error',
+                'error'
+            );
+        }
+    }
+
+    public function postActive(Request $request){
+        if($request->has('id')){
+            $result = $this->currentModel->find($request->get('id'));
+            $result->published = $request->get('checked');
+            $result->save();
+        }else{
+            return Main::message(
+                'Wrong parameters!',
+                'Error',
+                'error'
+            );
+        }
     }
 
 }
