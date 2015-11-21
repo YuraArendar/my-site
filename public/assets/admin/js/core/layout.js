@@ -65,4 +65,21 @@ $(document).ready(function(){
             });
         }
     });
+
+    //
+    $('.change-lang-form').on('click',function(){
+        var lang = $(this).data('lang');
+        var _token = $('meta[name="csrf_token"]').attr('content');
+
+        $.ajax({
+            type: "POST",
+            url: '/admin/language-form',
+            data: {_token:_token,language:lang},
+            dataType: "json",
+            success: function(data){
+                console.log(data);
+                Main.actionData(data);
+            }
+        });
+    });
 });

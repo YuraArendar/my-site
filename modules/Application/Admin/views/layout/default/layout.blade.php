@@ -44,27 +44,12 @@
 
             <!-- Content area -->
             <div class="content">
+
+
+
                 <div class="col-md-12">
+                    @include('admin::layout.default.inc.page-header')
                     <div class="panel panel-white">
-                        <div class="panel-heading">
-                            <h6 class="panel-title">{{ $title }}</h6>
-
-                            <div class="heading-elements">
-                                <ul class="icons-list">
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="icon-menu7"></i> <span class="caret"></span></a>
-                                        <ul class="dropdown-menu dropdown-menu-right">
-                                            <li><a href="/admin/{{ $template }}/create">Add new {{ $itemName }}</a></li>
-                                            <li><a href="#">----</a></li>
-                                            <li><a href="#">----</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="#">----</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                            <a class="heading-elements-toggle"><i class="icon-menu"></i></a></div>
-
                         <div class="panel-body">
                              @yield('content')
                         </div>

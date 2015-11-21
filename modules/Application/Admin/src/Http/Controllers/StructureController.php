@@ -1,6 +1,7 @@
 <?php namespace Application\Admin\Http\Controllers;
 
 
+use Application\Admin\Helpers\FormLang;
 use Application\Admin\Helpers\Main;
 use Application\Admin\Helpers\TreeBuilder;
 use Application\Admin\Structure;
@@ -209,7 +210,7 @@ class StructureController extends BaseController
         }else{
             $langStructure =  new StructureLang();
             $langStructure->structure_id = $objectStructure->id;
-            $langStructure->language_id = \Lang::locale();
+            $langStructure->language_id = FormLang::getCurrentLang();
             $langStructure->name = $data['name'];
             $langStructure->description = $data['description'];
             $langStructure->save();

@@ -26,11 +26,14 @@ class Main{
 
     public static function redirect($url='', $status = '302', $message= '', $title = '', $type = '',$icon='',$class='')
     {
-        \Session::put('message.type',$type);
-        \Session::put('message.title',$title);
-        \Session::put('message.message',$message);
-        \Session::put('message.icon',$icon);
-        \Session::put('message.class',$class);
+        if($message != ''){
+            \Session::put('message.type',$type);
+            \Session::put('message.title',$title);
+            \Session::put('message.message',$message);
+            \Session::put('message.icon',$icon);
+            \Session::put('message.class',$class);
+        }
+
         if(\Request::ajax()){
             return array('redirect'=>$url);
         }else{

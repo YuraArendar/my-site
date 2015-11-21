@@ -11,6 +11,11 @@ Route::group(['prefix' => 'admin','namespace'=>'Application\Admin\Http\Controlle
     Route::post('auth/register', 'Auth\AdminAuthController@postRegister');
 
     Route::group(['middleware' => 'auth.admin'], function () {
+        // all Ajax Routes
+        Route::post('language-form',['as'=>'change_form_language','uses'=>'AjaxController@postChangeLang']);
+
+
+        // Routes Structure
         Route::get('structure','StructureController@getIndex');
         Route::get('structure/create',['as'=>'create_structure','uses'=>'StructureController@getCreate']);
         Route::post('structure/create','StructureController@postStore');
