@@ -2,6 +2,7 @@
 namespace Application\Admin\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Application\Admin\Helpers\FormLang;
 use Application\Admin\Helpers\Main;
 use Illuminate\Http\Request;
 
@@ -33,6 +34,13 @@ class BaseController extends Controller{
      */
     public $template='';
 
+    /**
+     * tempates name for controller
+     * folder name
+     * @var string
+     */
+    public $layout='default';
+
 
     /**
      * current controller
@@ -52,8 +60,7 @@ class BaseController extends Controller{
     {
         Main::init();
 
-        view()->share('locale',\Lang::getLocale());
-
+        view()->share('locale',FormLang::getCurrentLang());
         view()->share('itemName',$this->itemName);
 
         view()->share('partition',$this->itemName);
@@ -61,6 +68,8 @@ class BaseController extends Controller{
         view()->share('title',$this->itemName);
 
         view()->share('template',$this->template);
+
+        view()->share('layout',$this->layout);
     }
 
     /**

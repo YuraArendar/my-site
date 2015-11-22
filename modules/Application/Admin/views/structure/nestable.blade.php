@@ -1,4 +1,4 @@
-@extends('admin::layout.default.layout')
+@extends('admin::layout.'.$layout.'.layout')
 
 @section('content')
 <div class="cf nestable-lists">

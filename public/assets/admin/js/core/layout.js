@@ -66,7 +66,8 @@ $(document).ready(function(){
         }
     });
 
-    //
+    // изменение языка редактируемого контента
+
     $('.change-lang-form').on('click',function(){
         var lang = $(this).data('lang');
         var _token = $('meta[name="csrf_token"]').attr('content');
@@ -77,9 +78,22 @@ $(document).ready(function(){
             data: {_token:_token,language:lang},
             dataType: "json",
             success: function(data){
-                console.log(data);
                 Main.actionData(data);
             }
         });
     });
+
+    // инициализация дерева структуры
+    if(typeof $(".tree-default").html() != 'undefined'){
+        $(".tree-default").fancytree({
+            init: function(event, data) {
+                $('.has-tooltip .fancytree-title').tooltip();
+            },
+            click: function(event, data) {
+                var node = data.node;
+                window.location.href = node.data.href;
+            },
+        });
+    }
+
 });

@@ -1,6 +1,6 @@
 <div class="navbar navbar-default navbar-fixed-top header-highlight">
     <div class="navbar-header">
-        <a class="navbar-brand" href="index.html"><img src="assets/images/logo_light.png" alt=""></a>
+        <a class="navbar-brand" href="index.html"><img src="/assets/admin/images/logo_light.png" alt=""></a>
 
         <ul class="nav navbar-nav visible-xs-block">
             <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
@@ -96,17 +96,15 @@
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown language-switch">
                 <a class="dropdown-toggle" data-toggle="dropdown">
-                    <img src="assets/images/flags/gb.png" class="position-left" alt="">
+                    <img src="/assets/admin/images/flags/gb.png" class="position-left" alt="">
                     English
                     <span class="caret"></span>
                 </a>
 
                 <ul class="dropdown-menu">
-                    <li><a class="deutsch"><img src="assets/images/flags/de.png" alt=""> Deutsch</a></li>
-                    <li><a class="ukrainian"><img src="assets/images/flags/ua.png" alt=""> Українська</a></li>
-                    <li><a class="english"><img src="assets/images/flags/gb.png" alt=""> English</a></li>
-                    <li><a class="espana"><img src="assets/images/flags/es.png" alt=""> España</a></li>
-                    <li><a class="russian"><img src="assets/images/flags/ru.png" alt=""> Русский</a></li>
+                    <li><a class="ukrainian"><img src="/assets/admin/images/flags/ua.png" alt=""> Українська</a></li>
+                    <li><a class="english"><img src="/assets/admin/images/flags/gb.png" alt=""> English</a></li>
+                    <li><a class="russian"><img src="/assets/admin/images/flags/ru.png" alt=""> Русский</a></li>
                 </ul>
             </li>
 
@@ -128,7 +126,7 @@
                     <ul class="media-list dropdown-content-body">
                         <li class="media">
                             <div class="media-left">
-                                <img src="assets/images/placeholder.jpg" class="img-circle img-sm" alt="">
+                                <img src="/assets/admin/images/placeholder.jpg" class="img-circle img-sm" alt="">
                                 <span class="badge bg-danger-400 media-badge">5</span>
                             </div>
 
@@ -144,7 +142,7 @@
 
                         <li class="media">
                             <div class="media-left">
-                                <img src="assets/images/placeholder.jpg" class="img-circle img-sm" alt="">
+                                <img src="/assets/admin/images/placeholder.jpg" class="img-circle img-sm" alt="">
                                 <span class="badge bg-danger-400 media-badge">4</span>
                             </div>
 
@@ -159,7 +157,7 @@
                         </li>
 
                         <li class="media">
-                            <div class="media-left"><img src="assets/images/placeholder.jpg" class="img-circle img-sm" alt=""></div>
+                            <div class="media-left"><img src="/assets/admin/images/placeholder.jpg" class="img-circle img-sm" alt=""></div>
                             <div class="media-body">
                                 <a href="#" class="media-heading">
                                     <span class="text-semibold">Jeremy Victorino</span>
@@ -171,7 +169,7 @@
                         </li>
 
                         <li class="media">
-                            <div class="media-left"><img src="assets/images/placeholder.jpg" class="img-circle img-sm" alt=""></div>
+                            <div class="media-left"><img src="/assets/admin/images/placeholder.jpg" class="img-circle img-sm" alt=""></div>
                             <div class="media-body">
                                 <a href="#" class="media-heading">
                                     <span class="text-semibold">Beatrix Diaz</span>
@@ -183,7 +181,7 @@
                         </li>
 
                         <li class="media">
-                            <div class="media-left"><img src="assets/images/placeholder.jpg" class="img-circle img-sm" alt=""></div>
+                            <div class="media-left"><img src="/assets/admin/images/placeholder.jpg" class="img-circle img-sm" alt=""></div>
                             <div class="media-body">
                                 <a href="#" class="media-heading">
                                     <span class="text-semibold">Richard Vango</span>
@@ -201,22 +199,8 @@
                 </div>
             </li>
 
-            <li class="dropdown dropdown-user">
-                <a class="dropdown-toggle" data-toggle="dropdown">
-                    <img src="assets/images/placeholder.jpg" alt="">
-                    <span>Victoria</span>
-                    <i class="caret"></i>
-                </a>
+            @include('admin::layout.'.$layout.'.inc.user-actions')
 
-                <ul class="dropdown-menu dropdown-menu-right">
-                    <li><a href="#"><i class="icon-user-plus"></i> My profile</a></li>
-                    <li><a href="#"><i class="icon-coins"></i> My balance</a></li>
-                    <li><a href="#"><span class="badge bg-teal-400 pull-right">58</span> <i class="icon-comment-discussion"></i> Messages</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#"><i class="icon-cog5"></i> Account settings</a></li>
-                    <li><a href="#"><i class="icon-switch2"></i> Logout</a></li>
-                </ul>
-            </li>
         </ul>
     </div>
 </div>

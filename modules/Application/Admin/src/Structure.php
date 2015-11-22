@@ -17,7 +17,13 @@ class Structure extends Node
         'position'
     ];
 
-    public function structureLang(){
+    public function structureLang()
+    {
         return $this->hasMany('Application\Admin\StructureLang','structure_id');
+    }
+
+    public function content()
+    {
+        return $this->belongsToMany('Application\Admin\Content');
     }
 }

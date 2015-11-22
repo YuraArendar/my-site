@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,10 +8,10 @@
     <title>Admin</title>
 
     <!-- Global stylesheets -->
-        @include('admin::layout.default.styles')
+        @include('admin::layout.'.$layout.'.styles')
     <!-- /global stylesheets -->
 
-    @include('admin::layout.default.scripts')
+    @include('admin::layout.'.$layout.'.scripts')
 
 </head>
 
@@ -24,7 +23,7 @@
     });
 </script>
 <!-- Main navbar -->
-    @include('admin::layout.default.inc.navbar')
+    @include('admin::layout.'.$layout.'.inc.navbar')
 <!-- /main navbar -->
 
 
@@ -35,7 +34,7 @@
     <div class="page-content">
 
         <!-- Main sidebar -->
-            @include('admin::layout.default.inc.menu')
+            @include('admin::layout.'.$layout.'.inc.menu')
         <!-- /main sidebar -->
 
 
@@ -48,7 +47,7 @@
 
 
                 <div class="col-md-12">
-                    @include('admin::layout.default.inc.page-header')
+                    @include('admin::layout.'.$layout.'.inc.page-header')
                     <div class="panel panel-white">
                         <div class="panel-body">
                              @yield('content')
@@ -56,7 +55,7 @@
                     </div>
                 </div>
                 <!-- Footer -->
-                @include('admin::layout.default.inc.footer-text')
+
                 <!-- /footer -->
 
             </div>

@@ -24,7 +24,7 @@ class StructureController extends BaseController
 
         $structures = $this->currentModel->all()->toArray();
         foreach ($structures as $key=>$struct) {
-            $lang = $this->langModel->where(['structure_id'=>$struct['id'],'language_id'=>\Lang::getLocale()])->first();
+            $lang = $this->langModel->where(['structure_id'=>$struct['id'],'language_id'=>FormLang::getCurrentLang()])->first();
             if($lang){
                 $structures[$key]['name'] = $lang->name;
             }else{
@@ -50,7 +50,7 @@ class StructureController extends BaseController
         $structures = $this->currentModel->get()->sortBy('position');
 
         foreach ($structures as $key=>$struct) {
-            $lang = $this->langModel->where(['structure_id'=>$struct['id'],'language_id'=>\Lang::getLocale()])->first();
+            $lang = $this->langModel->where(['structure_id'=>$struct['id'],'language_id'=>FormLang::getCurrentLang()])->first();
             if($lang){
                 $structures[$key]->name = $lang->name;
                 $structures[$key]->link = action('\Application\Admin\Http\Controllers\StructureController@getEdit',['id'=>$struct['id']]);
@@ -166,7 +166,7 @@ class StructureController extends BaseController
         $structure = $this->currentModel->with('structureLang')->find($id)->toArray();
 
         $lang = $this->langModel->where('structure_id',$id)
-            ->where('language_id',\Lang::getLocale())
+            ->where('language_id',FormLang::getCurrentLang())
             ->first();
         if($lang)
             $lang->toArray();
@@ -201,7 +201,7 @@ class StructureController extends BaseController
         $objectStructure->controller = $data['controller'];
         $objectStructure->save();
         $langStructure =  $this->langModel->where('structure_id',$id)
-            ->where('language_id',\Lang::locale())
+            ->where('language_id',FormLang::getCurrentLang())
             ->first();
         if($langStructure){
             $langStructure->name = $data['name'];
