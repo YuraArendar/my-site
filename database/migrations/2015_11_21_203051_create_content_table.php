@@ -22,7 +22,7 @@ class CreateContentTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('structure_content', function(Blueprint $table) {
+        Schema::create('content_structure', function(Blueprint $table) {
             $table->integer('content_id')->unsigned()->index();
             $table->foreign('content_id')->references('id')->on('content')->onDelete('cascade');
             $table->integer('structure_id')->unsigned()->index();

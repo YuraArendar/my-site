@@ -1,7 +1,21 @@
 <div class="form-group">
+    <label class="control-label col-lg-2 text-semibold">Date start</label>
+    <div class="col-lg-10">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="icon-calendar22"></i></span>
+            {!! Form::text('date_start',(!empty($content['date_start'])? date('m/d/Y',strtotime($content['date_start'])):date('m/d/Y')),['class'=>'form-control daterange-single','id'=>'date_start']) !!}
+        </div>
+        <div class="form-control-feedback" id="date_start-error-icon">
+            <i class="icon-cancel-circle2"></i>
+        </div>
+        <span class="help-block" id="date_start-error"></span>
+    </div>
+</div>
+
+<div class="form-group">
     <label class="control-label col-lg-2 text-semibold">Name</label>
     <div class="col-lg-10">
-        {!! Form::text('name',@$structure['lang']['name'],['class'=>'form-control','id'=>'name']) !!}
+        {!! Form::text('name',@$content['lang']['name'],['class'=>'form-control','id'=>'name']) !!}
         <div class="form-control-feedback" id="name-error-icon">
             <i class="icon-cancel-circle2"></i>
         </div>
@@ -12,7 +26,7 @@
 <div class="form-group">
     <label class="control-label col-lg-2 text-semibold">Alias</label>
     <div class="col-lg-10">
-        {!! Form::text('alias',@$structure['alias'],['class'=>'form-control','id'=>'alias']) !!}
+        {!! Form::text('alias',@$content['alias'],['class'=>'form-control','id'=>'alias']) !!}
         <div class="form-control-feedback" id="alias-error-icon">
             <i class="icon-cancel-circle2"></i>
         </div>
@@ -20,25 +34,11 @@
     </div>
 </div>
 
-<div class="form-group">
-    <label class="control-label col-lg-2 text-semibold">Parent</label>
-    <div class="col-lg-10">
-        {!! Form::select('parent_id',$listStructures,@$structure['parent_id'],['class'=>'form-control mb-md']) !!}
-    </div>
-</div>
-
 
 <div class="form-group">
-    <label class="control-label col-lg-2 text-semibold">Controller</label>
+    <label class="control-label col-lg-2 text-semibold">Description</label>
     <div class="col-lg-10">
-        {!! Form::select('controller',['list'=>'list','page'=>'page'],null,['class'=>'form-control mb-md']) !!}
-    </div>
-</div>
-
-<div class="form-group">
-    <label class="control-label col-lg-2 text-semibold">Name</label>
-    <div class="col-lg-10">
-        {!! Form::textarea('description',@$structure['lang']['description'],['class'=>'form-control','id'=>'description']) !!}
+        {!! Form::textarea('description',@$content['lang']['description'],['class'=>'form-control','id'=>'description']) !!}
         <div class="form-control-feedback" id="description-error-icon">
             <i class="icon-cancel-circle2"></i>
         </div>
@@ -46,7 +46,27 @@
     </div>
 </div>
 
+<div class="form-group">
+    <label class="control-label col-lg-2 text-semibold">Content</label>
+    <div class="col-lg-10">
+        {!! Form::textarea('content',@$content['lang']['content'],['class'=>'form-control','id'=>'content']) !!}
+        <div class="form-control-feedback" id="description-error-icon">
+            <i class="icon-cancel-circle2"></i>
+        </div>
+        <span class="help-block" id="description-error"></span>
+    </div>
+</div>
+<script>
+    var editor = CKEDITOR.replace( 'content',{
+        filebrowserBrowseUrl : '/elfinder/ckeditor'
+    } );
+</script>
+
+
+{!! \Application\Admin\Helpers\Main::getEditeImage('image') !!}
+
 {!! Form::hidden('language_id',$locale) !!}
+{!! Form::hidden('structure_id',$id_structure) !!}
 {!! Form::hidden('_token',csrf_token()) !!}
 
 <div class="text-right">

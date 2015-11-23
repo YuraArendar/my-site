@@ -96,4 +96,9 @@ $(document).ready(function(){
         });
     }
 
+    // datepicker init
+    $('.daterange-single').daterangepicker({
+        singleDatePicker: true
+    });
+
 });

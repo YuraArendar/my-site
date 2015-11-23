@@ -7,10 +7,11 @@
     'method'=>'POST',
     'class'=>'form-horizontal form-bordered',
     'onsubmit'=>'return Main.formSubmit(this);',
-    'url'=>Route('update_structure', ['id'=>@$structure['id']])
+    'url'=>Route('update_content', ['id'=>@$content['id']]),
+    'files' => true
     ]) !!}
 
-    @include('admin::structure.form')
+    @include('admin::'.$template.'.form')
 
     {!! Form::close() !!}
 

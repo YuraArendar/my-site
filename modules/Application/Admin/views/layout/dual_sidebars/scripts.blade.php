@@ -31,9 +31,22 @@
 <script type="text/javascript" src="/assets/admin/js/plugins/trees/fancytree_all.min.js"></script>
 <script type="text/javascript" src="/assets/admin/js/plugins/trees/fancytree_childcounter.js"></script>
 <!-- /tree JS -->
+<script src="/assets/admin/js/ckeditor/ckeditor.js" type="text/javascript" charset="utf-8" ></script>
+
+<script type="text/javascript" src="/assets/admin/js/core/libraries/jquery_ui/datepicker.min.js"></script>
+<script type="text/javascript" src="/assets/admin/js/core/libraries/jquery_ui/effects.min.js"></script>
+<script type="text/javascript" src="/assets/admin/js/plugins/notifications/jgrowl.min.js"></script>
+<script type="text/javascript" src="/assets/admin/js/plugins/ui/moment/moment.min.js"></script>
+<script type="text/javascript" src="/assets/admin/js/plugins/pickers/daterangepicker.js"></script>
+<script type="text/javascript" src="/assets/admin/js/plugins/pickers/anytime.min.js"></script>
+<script type="text/javascript" src="/assets/admin/js/plugins/pickers/pickadate/picker.js"></script>
+<script type="text/javascript" src="/assets/admin/js/plugins/pickers/pickadate/picker.date.js"></script>
+<script type="text/javascript" src="/assets/admin/js/plugins/pickers/pickadate/picker.time.js"></script>
+<script type="text/javascript" src="/assets/admin/js/plugins/pickers/pickadate/legacy.js"></script>
+<script type="text/javascript" src="/assets/admin/js/plugins/uploaders/fileinput.min.js"></script>
+<script type="text/javascript" src="/assets/admin/js/pages/uploader_bootstrap.js"></script>
 
 
-<!-- custom files -->
 <script type="text/javascript" src="/assets/admin/js/core/main.js"></script>
 <script type="text/javascript" src="/assets/admin/js/core/layout.js"></script>
 <!-- /custom files -->

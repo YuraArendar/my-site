@@ -1,7 +1,7 @@
 <?php
 
 Route::group(['prefix' => 'admin','namespace'=>'Application\Admin\Http\Controllers'], function () {
-    // Authentication routes...
+    // Authentication routes...WWW
     Route::get('auth/login', 'Auth\AdminAuthController@getLogin');
     Route::post('auth/login', 'Auth\AdminAuthController@postSign');
     Route::get('auth/logout', 'Auth\AdminAuthController@getLogout');

@@ -4,7 +4,7 @@ namespace Application\Admin;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Structure extends Model
+class Content extends Model
 {
     protected $table = 'content';
 
@@ -23,6 +23,6 @@ class Structure extends Model
 
     public function structure()
     {
-        return $this->belongsToMany('Application\Admin\Structure');
+        return $this->belongsToMany('Application\Admin\Structure')->withTimestamps();
     }
 }

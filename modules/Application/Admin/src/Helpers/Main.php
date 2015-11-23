@@ -1,6 +1,6 @@
 <?php namespace Application\Admin\Helpers;
 
-
+use Carbon\Carbon;
 
 class Main{
 
@@ -50,6 +50,16 @@ class Main{
             'icon'=>$icon,
             'class'=>$class
         ];
+    }
+
+    public static function getDateFromPicker($date)
+    {
+        return Carbon::createFromTimestamp(strtotime($date));
+    }
+
+    public static function getEditeImage($name = 'image')
+    {
+        return view('admin::inc.image',compact('name'));
     }
 
 }

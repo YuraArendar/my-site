@@ -150,6 +150,7 @@ return [
          */
         Application\Site\SiteServiceProvider::class,
         Application\Admin\AdminServiceProvider::class,
+        Barryvdh\Elfinder\ElfinderServiceProvider::class,
 
         Laracasts\Generators\GeneratorsServiceProvider::class,
 

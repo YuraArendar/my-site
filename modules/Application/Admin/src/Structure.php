@@ -24,6 +24,6 @@ class Structure extends Node
 
     public function content()
     {
-        return $this->belongsToMany('Application\Admin\Content');
+        return $this->belongsToMany('Application\Admin\Content')->withTimestamps();
     }
 }
